@@ -74,3 +74,28 @@ while (totalEmpHrsLimit < MAX_HRS_IN_MONTH && totalWorkingDaysLimit < NUM_OF_WOR
 
     console.log(`Total Days: ${totalWorkingDaysLimit}, Total Hrs: ${totalEmpHrsLimit}, Emp Wage: ${empWageLimit}`);
 }
+
+// UC-6
+
+function calcDailyWage(empHrs) {
+    return empHrs * WAGE_PER_HOUR;
+}
+
+const MAX_HRS_INMONTH = 160;
+const NUM_OF_WORKINGDAYS = 20;
+let totalEmpHr = 0;
+let totalWorkingDays = 0;
+let empDailyWageArr = new Array(); 
+
+while (totalEmpHr <= MAX_HRS_INMONTH && totalWorkingDays < NUM_OF_WORKINGDAYS) {
+    totalWorkingDays++;
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+    let empHrs = getWorkingHours(empCheck);
+    totalEmpHr += empHrs;
+    empDailyWageArr.push(calcDailyWage(empHrs)); 
+}
+
+empWage = calcDailyWage(totalEmpHr);
+
+console.log(`Total Days: ${totalWorkingDays}, Total Hrs: ${totalEmpHr}, Emp Wage: ${empWage}`);
+console.log("Daily Wages Array:", empDailyWageArr);
